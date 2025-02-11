@@ -22,4 +22,4 @@ def criar_valores(nova_mensagem: classes.Mensagem, db: Session = Depends(get_db)
 
 @app.get("/quadrado/{num}")
 def square(num: int):
-    return num ** 3
+    return num ** 2
