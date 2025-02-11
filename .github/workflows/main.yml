@@ -1,12 +1,13 @@
 name: Build and Deploy
 
-on:[push,pull_request]
+on:
+  [push, pull_request]
 
 jobs:
- job1:
-  runs-on: ubuntu-latest
-  steps:
-   -name: pulling git repo
-    uses: actions/checkout@v2
-    -name: Hello
-    run: echo "Hello"
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pulling Git repo
+        uses: actions/checkout@v2
+      - name: Hello
+        run: echo "Hello"
