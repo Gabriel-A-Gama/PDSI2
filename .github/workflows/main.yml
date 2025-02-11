@@ -12,9 +12,9 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: ${{ secrets.DB_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_USER: ${{ secrets.SECRETS_DATABASE }}
+          POSTGRES_PASSWORD: ${{ secrets.PASSWORD_SECRETS }}
+          POSTGRES_DB: ${{ secrets.DATABASE }}
         ports:
           - 5432:5432
 
@@ -42,5 +42,5 @@ jobs:
 
       - name: Run pytest with detailed output
         env:
-          DATABASE_URL: postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@localhost:5432/${{ secrets.DB_NAME }}
+          DATABASE_URL: postgresql://${{ secrets.SECRETS_DATABASE }}:${{ secrets.PASSWORD_SECRETS }}@localhost:5432/${{ secrets.DATABASE }}
         run: pytest Backend/teste.py --maxfail=5 --disable-warnings --verbose
