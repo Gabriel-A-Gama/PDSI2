@@ -33,10 +33,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Waiting for PostgreSQL to be ready
-        run: sleep 15
+      - name: Wait for PostgreSQL to start
+        run: |
+          until pg_isready -h localhost -p 5432; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 5
+          done
 
-      - name: Run pytest
+      - name: Run pytest with detailed output
         env:
           DATABASE_URL: postgresql://postgres:admin@localhost:5432/pdsi2_bd
-        run: pytest teste.py
+        run: pytest --maxfail=5 --disable-warnings --verbose
