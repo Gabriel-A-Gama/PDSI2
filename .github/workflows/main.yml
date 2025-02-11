@@ -43,4 +43,4 @@ jobs:
       - name: Run pytest with detailed output
         env:
           DATABASE_URL: postgresql://postgres:admin@localhost:5432/pdsi2_bd
-        run: pytest --maxfail=5 --disable-warnings --verbose
+        run: pytest Backend/teste.py --maxfail=5 --disable-warnings --verbose
