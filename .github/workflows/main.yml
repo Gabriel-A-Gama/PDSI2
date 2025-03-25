@@ -42,5 +42,5 @@ jobs:
 
       - name: Run pytest with detailed output
         env:
-          DATABASE_URL: postgresql://${{ secrets.SECRETS_DATABASE }}:${{ secrets.PASSWORD_SECRETS }}@localhost:5432/${{ secrets.DATABASE }}
+          SQLALCHEMY_DATABASE_URL: postgresql://${{ secrets.SECRETS_DATABASE }}:${{ secrets.PASSWORD_SECRETS }}@localhost:5432/${{ secrets.DATABASE }}
         run: pytest Backend/teste.py --maxfail=5 --disable-warnings --verbose
